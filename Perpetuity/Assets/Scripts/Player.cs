@@ -20,13 +20,20 @@ public class Player : MonoBehaviour {
 
     public Vector2 jumpVelocity;
     public Vector2 jumpAccel;
+    public float maxJumpSpeed;
 
     public GameObject ground;
 
     public Collider2D playerCol;
     public Collider2D groundCol;
 
-    public GameObject shoulder;
+    GameObject shoulder;
+
+    GameObject arm;
+
+    GameObject revolver;
+
+    GameObject crosshair;
 
     // Use this for initialization
     void Start () {
@@ -35,6 +42,9 @@ public class Player : MonoBehaviour {
         ground = GameObject.Find("Ground");
         groundCol = ground.GetComponent<Collider2D>();
         shoulder = transform.GetChild(0).gameObject;
+        arm = shoulder.transform.GetChild(0).gameObject;
+        revolver = arm.transform.GetChild(0).gameObject;
+        crosshair = revolver.transform.GetChild(1).gameObject;
 	}
 	
 	// Update is called once per frame
@@ -66,7 +76,7 @@ public class Player : MonoBehaviour {
         {
             if (acceleration.x > 0.0001 || acceleration.x < -0.0001 || acceleration.y > 0.0001 || acceleration.y < -0.0001)
             {
-                DeAccel();
+                //DeAccel();
             }
             else
             {
@@ -80,7 +90,7 @@ public class Player : MonoBehaviour {
             Vector2 dir = new Vector2(0, 1);
             jumpAccel = 0.1f * dir;
             jumpVelocity += jumpAccel;
-            jumpVelocity = Vector3.ClampMagnitude(jumpVelocity, maxSpeed);
+            jumpVelocity = Vector3.ClampMagnitude(jumpVelocity, maxJumpSpeed);
             pos += jumpVelocity;
             gravity = true;
         }
@@ -145,13 +155,10 @@ public class Player : MonoBehaviour {
         Vector2 shoulderPos = new Vector2(shoulder.transform.position.x, shoulder.transform.position.y);
 
         Vector2 mouseShoulderVec = shoulderPos - mousePos;
-        Debug.Log(mouseShoulderVec);
 
         float angle = Mathf.Atan2(mouseShoulderVec.x, mouseShoulderVec.y);
 
         angle = Mathf.Rad2Deg * angle + 90;
         shoulder.transform.rotation = Quaternion.Euler(0, 0, -angle);
-
-        Debug.Log(angle);
     }
 }
