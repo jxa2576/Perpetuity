@@ -394,6 +394,8 @@ GameObject:
   - component: {fileID: 1286217503}
   - component: {fileID: 1286217502}
   - component: {fileID: 1286217504}
+  - component: {fileID: 1286217501}
+  - component: {fileID: 1286217506}
   - component: {fileID: 1286217505}
   m_Layer: 0
   m_Name: Player
@@ -402,6 +404,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!50 &1286217501
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286217500}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 5
+  m_AngularDrag: 1
+  m_GravityScale: 5
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!212 &1286217502
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -455,7 +477,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1286217500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.42, y: -0.43, z: 0}
+  m_LocalPosition: {x: 1.54, y: 1.15, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2052902917}
@@ -498,21 +520,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bc4a71325dc3140bd0c8f4729ccf1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {x: 0, y: 0}
-  velocity: {x: 0, y: 0}
-  acceleration: {x: 0, y: 0}
-  maxSpeed: 0.1
-  aRate: 0.2
-  deacceleration: 0.9
-  gravity: 1
-  gravVelocity: {x: 0, y: 0}
-  gravAccel: {x: 0, y: 0}
-  jumpVelocity: {x: 0, y: 0}
-  jumpAccel: {x: 0, y: 0}
-  maxJumpSpeed: 0.2
-  ground: {fileID: 0}
-  playerCol: {fileID: 0}
-  groundCol: {fileID: 0}
+--- !u!114 &1286217506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286217500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7109d27c900a08f4e924cbb00055c223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  jumpSpeed: 1000
 --- !u!1 &2052902916
 GameObject:
   m_ObjectHideFlags: 0
