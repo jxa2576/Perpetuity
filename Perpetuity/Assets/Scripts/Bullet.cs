@@ -5,13 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     Vector2 pos;
-
+    Vector2 startPos;
     Vector2 dir;
+
+    public float speed;
 
 	// Use this for initialization
 	void Start () {
         pos = transform.position;
-
+        startPos = transform.position;
         dir = transform.right * 5;
         Debug.Log(dir);
 
@@ -21,7 +23,11 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        pos += dir * 0.1f;
+        pos += dir * speed;
         transform.position = pos;
+        if(Mathf.Abs(Vector2.Distance(startPos,pos)) > 10)
+        {
+            Destroy(this.gameObject);
+        }
 	}
 }
