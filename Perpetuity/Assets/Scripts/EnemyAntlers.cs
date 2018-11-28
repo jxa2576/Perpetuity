@@ -14,6 +14,10 @@ public class EnemyAntlers : MonoBehaviour {
 
     public float jump;
 
+    public GameObject beam;
+
+    GameObject beamAttack;
+
     bool awake;
 
     // Use this for initialization
@@ -35,6 +39,8 @@ public class EnemyAntlers : MonoBehaviour {
             direction.Normalize();
 
             rigidB.AddForce(direction * speed);
+
+            attack();
         }
         else
         {
@@ -52,7 +58,24 @@ public class EnemyAntlers : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            if(beamAttack != null)
+            {
+                Destroy(beamAttack);
+            }
             Destroy(gameObject);
+        }
+    }
+
+    void attack()
+    {
+        float rand = Random.Range(0.0f, 100.0f);
+
+        if(rand > 99)
+        {
+            if(beamAttack == null)
+            {
+                beamAttack = Instantiate(beam, this.gameObject.transform.GetChild(0).transform.position, Quaternion.identity);
+            }
         }
     }
 }

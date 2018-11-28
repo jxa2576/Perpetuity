@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Icicle
   - Snowball
+  - Beam
   layers:
   - Default
   - TransparentFX

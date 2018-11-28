@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour {
 	void Update () {
         pos += dir * speed;
         transform.position = pos;
-        if(Mathf.Abs(Vector2.Distance(startPos,pos)) > 10)
+        if(Mathf.Abs(Vector2.Distance(startPos,pos)) > 20)
         {
             Destroy(this.gameObject);
         }

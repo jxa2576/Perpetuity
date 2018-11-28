@@ -24,6 +24,7 @@ public class EnemyIcicle : MonoBehaviour {
     void Start () {
         rigidB = GetComponent<Rigidbody2D>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         awake = false;
     }
 	

@@ -41,7 +41,12 @@ public class Manager : MonoBehaviour {
                 }
             }
         }
-	}
+
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
+    }
 
     void EnemySpawn()
     {
