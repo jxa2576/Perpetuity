@@ -14,8 +14,8 @@ public class Bullet : MonoBehaviour {
 	void Start () {
         pos = transform.position;
         startPos = transform.position;
-        dir = transform.right * 5;
-        Debug.Log(dir);
+        dir = transform.right;
+        //Debug.Log(dir);
 
         dir.Normalize();
         

@@ -20,7 +20,7 @@ public class Revolver : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Shoot");
+            //Debug.Log("Shoot");
             Instantiate(bullet, this.transform.GetChild(0).gameObject.transform.position, this.transform.rotation);
         }
     }
