@@ -6,9 +6,11 @@ public class Revolver : MonoBehaviour {
 
     public GameObject bullet;
 
+    //GameObject crosshair;
+
 	// Use this for initialization
 	void Start () {
-		
+        //crosshair = gameObject.transform.GetChild(1).gameObject;
 	}
 	
 	// Update is called once per frame

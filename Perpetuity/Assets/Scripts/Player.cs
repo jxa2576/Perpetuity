@@ -13,14 +13,14 @@ public class Player : MonoBehaviour {
 
     GameObject revolver;
 
-    GameObject crosshair;
+    //GameObject crosshair;
 
     // Use this for initialization
     void Start () {
         shoulder = transform.GetChild(0).gameObject;
         arm = shoulder.transform.GetChild(0).gameObject;
         revolver = arm.transform.GetChild(0).gameObject;
-        crosshair = revolver.transform.GetChild(1).gameObject;
+        //crosshair = revolver.transform.GetChild(1).gameObject;
 	}
 	
 	// Update is called once per frame
