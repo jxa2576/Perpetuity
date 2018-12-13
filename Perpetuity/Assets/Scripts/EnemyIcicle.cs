@@ -24,7 +24,6 @@ public class EnemyIcicle : MonoBehaviour {
     void Start () {
         rigidB = GetComponent<Rigidbody2D>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         awake = false;
     }
 	
@@ -38,13 +37,6 @@ public class EnemyIcicle : MonoBehaviour {
             if (currentIcicle == null)
             {
                 currentIcicle = Instantiate(icicle, this.gameObject.transform.GetChild(0).transform.position, this.transform.rotation);
-                direction = playerPos - pos;
-                direction.Normalize();
-
-                float angle = Mathf.Atan2(direction.x, direction.y);
-
-                angle = Mathf.Rad2Deg * angle + 90;
-                currentIcicle.transform.rotation = Quaternion.Euler(0, 0, -angle);
             }
 
             if (Mathf.Abs(Vector2.Distance(playerPos, pos)) > 10)
@@ -52,7 +44,6 @@ public class EnemyIcicle : MonoBehaviour {
                 rigidB.AddForce(playerPos - pos);
             }
 
-            icicleTravel();
         }
         else
         {
@@ -70,27 +61,8 @@ public class EnemyIcicle : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            if(currentIcicle != null)
-            {
-                Destroy(currentIcicle);
-            }
             Destroy(gameObject);
         }
     }
 
-    public void icicleTravel()
-    {
-        if(currentIcicle != null)
-        {
-            Vector2 pos = currentIcicle.transform.position;
-
-            pos += direction * speed;
-            currentIcicle.transform.position = pos;
-
-            if (Mathf.Abs(Vector2.Distance(gameObject.transform.position, pos)) > 10)
-            {
-                Destroy(currentIcicle);
-            }
-        }
-    }
 }

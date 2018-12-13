@@ -20,11 +20,18 @@ public class EnemyAntlers : MonoBehaviour {
 
     bool awake;
 
+    SpriteRenderer spriteRend;
+    public Sprite[] spriteList;
+
+    int animationCount = 0;
+    int frame = 0;
+
     // Use this for initialization
     void Start () {
         rigidB = GetComponent<Rigidbody2D>();
         pos = gameObject.transform.position;
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        spriteRend = GetComponent<SpriteRenderer>();
         awake = false;
     }
 	
@@ -36,6 +43,7 @@ public class EnemyAntlers : MonoBehaviour {
             playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
 
             Vector2 direction = playerPos - pos;
+            direction.y = 0;
             direction.Normalize();
 
             rigidB.AddForce(direction * speed);
@@ -52,6 +60,22 @@ public class EnemyAntlers : MonoBehaviour {
                 awake = true;
             }
         }
+
+        if(animationCount == 12)
+        {
+            if(frame == 0)
+            {
+                frame = 1;
+                spriteRend.sprite = spriteList[frame];
+            }
+            else
+            {
+                frame = 0;
+                spriteRend.sprite = spriteList[frame];
+            }
+            animationCount = 0;
+        }
+        animationCount++;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,7 +94,7 @@ public class EnemyAntlers : MonoBehaviour {
     {
         float rand = Random.Range(0.0f, 100.0f);
 
-        if(rand > 99)
+        if(rand > 98)
         {
             if(beamAttack == null)
             {

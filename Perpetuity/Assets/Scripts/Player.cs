@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -39,5 +40,32 @@ public class Player : MonoBehaviour {
 
         angle = Mathf.Rad2Deg * angle + 90;
         shoulder.transform.rotation = Quaternion.Euler(0, 0, -angle);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("Icicle"))
+        {
+            SceneManager.LoadScene("World");
+        }
+
+        if(collision.gameObject.CompareTag("Beam"))
+        {
+            SceneManager.LoadScene("World");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Snowball"))
+        {
+            SceneManager.LoadScene("World");
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene("World");
+        }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Icicle
   - Snowball
   - Beam
+  - Enemy
   layers:
   - Default
   - TransparentFX

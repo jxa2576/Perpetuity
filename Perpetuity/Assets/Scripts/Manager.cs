@@ -34,9 +34,10 @@ public class Manager : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.E))
             {
+                Debug.Log("E");
                 if (spawn)
                 {
-                    EnemySpawn();
+                    boss.SetActive(true);
                     spawn = false;
                 }
             }

@@ -16,20 +16,18 @@ public class IceBeam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        pos = gameObject.transform.position;
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-
+        Vector2 updatePos = gameObject.transform.position;
         if (pos.x > playerPos.x)
         {
             //left
-            pos += Vector2.left;
-            gameObject.transform.position = pos;
+            updatePos += Vector2.left;
+            gameObject.transform.position = updatePos;
         }
         else
         {
             //right
-            pos -= Vector2.left;
-            gameObject.transform.position = pos;
+            updatePos -= Vector2.left;
+            gameObject.transform.position = updatePos;
         }
 	}
 
